@@ -1,5 +1,5 @@
 var http = require('http');
-
+var selfAddress = require('./lib/ip.address').address;
 /**
  * Get port from environment and store in Express.
  */
@@ -19,6 +19,6 @@ var server = http.createServer(function(req, res) {
  * Listen on provided port, on all network interfaces.
  */
 
-server.listen(port, function() {
-  console.log('server listening @ %s:%d', '0.0.0.0', port);
+server.listen(port, selfAddress, function() {
+  console.log('server listening @ %s:%d', selfAddress, port);
 });
